@@ -11,5 +11,11 @@ namespace COMP2614Assign03
 	/// </summary>
 	class Helper
 	{
+		public static void Greetings()
+		{
+			Console.WriteLine("Hello from assignment 3");
+			Console.WriteLine(new String('-', 25));
+			Console.ReadLine();
+		}
 	}
 }
