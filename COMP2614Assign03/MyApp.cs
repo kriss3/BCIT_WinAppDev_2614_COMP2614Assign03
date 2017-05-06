@@ -24,6 +24,8 @@ namespace COMP2614Assign03
 		{
 			Helper.Greetings();
 			Helper.PrintInvoiceHeader();
+			Helper.GetInvoices();
+
 			Helper.PrintInvoiceLineHeader();
 		}
 	}

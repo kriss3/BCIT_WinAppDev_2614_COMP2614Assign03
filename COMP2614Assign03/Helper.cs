@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Configuration;
 using static System.Console;
 
 namespace COMP2614Assign03
@@ -32,6 +33,26 @@ namespace COMP2614Assign03
 			WriteLine(new String('-', 60));
 			WriteLine($"{"Qty",-5}{"SKU",-10}{"Description",-15}{"Price",10}{"PST",-10}{"EXT",15}");
 			WriteLine(new String('-', 60));
+		}
+
+
+
+		public static IEnumerable<InvoiceHeader> GetInvoices()
+		{
+			IEnumerable<InvoiceHeader> ih = new List<InvoiceHeader>();
+			var filePath = GetFilePath();
+			string filter = "*.txt";
+
+			var file = Directory.GetFiles(filePath, filter);
+
+
+			return ih;
+		}
+
+
+		private static string GetFilePath()
+		{
+			return ConfigurationManager.AppSettings["filePath"];
 		}
 	}
 }
