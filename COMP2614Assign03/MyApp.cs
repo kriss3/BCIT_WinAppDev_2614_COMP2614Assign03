@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace COMP2614Assign03
 {
@@ -16,11 +17,14 @@ namespace COMP2614Assign03
 		static void Main(string[] args)
 		{
 			Run();
+			ReadLine();
 		}
 
 		public static void Run()
 		{
 			Helper.Greetings();
+			Helper.PrintInvoiceHeader();
+			Helper.PrintInvoiceLineHeader();
 		}
 	}
 }
