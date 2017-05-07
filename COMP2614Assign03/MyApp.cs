@@ -22,11 +22,8 @@ namespace COMP2614Assign03
 
 		public static void Run()
 		{
-			Helper.Greetings();
-			Helper.PrintInvoiceHeader();
-			Helper.GetInvoices();
-
-			Helper.PrintInvoiceLineHeader();
+			var data = Helper.GetInvoices();
+			Helper.PrintInvoiceHeader(data);
 		}
 	}
 }
