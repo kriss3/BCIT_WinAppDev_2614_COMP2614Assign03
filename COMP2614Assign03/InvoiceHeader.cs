@@ -13,5 +13,20 @@ namespace COMP2614Assign03
 		public int Term { get; set; }
 		public List<InvoiceLine> InvoiceLines { get; set; }
 		public Guid InvoiceId { get; set; }
+
+		public int[] ParseTerm()
+		{
+			var intArray = Term.ToString().Select(c => Convert.ToInt32(c.ToString())).ToArray();
+
+			var results = new int[2];
+
+			for (int i = 0; i < intArray.Length; i++)
+			{
+				results[0] = intArray[0];
+				results[1] = int.Parse(intArray[1].ToString() + intArray[2].ToString());
+			}
+
+			return results;
+		}
 	}
 }
