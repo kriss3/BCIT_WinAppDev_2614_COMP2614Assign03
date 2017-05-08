@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using static System.Console;
 
 namespace COMP2614Assign03
@@ -22,8 +20,24 @@ namespace COMP2614Assign03
 
 		public static void Run()
 		{
-			var data = Helper.GetInvoices();
-			Helper.PrintInvoiceHeader(data);
+			IEnumerable<InvoiceHeader> data = null;
+			try
+			{
+				data = Helper.GetInvoices();
+			}
+			catch (DirectoryNotFoundException ex)
+			{
+				Helper.PrintErrorMessage($"Cannot find Invoice file. Please check configuration file.\n\n{ex.Message}");
+			}
+			catch (Exception ex)
+			{
+				Helper.PrintErrorMessage(ex.Message);
+			}
+
+			if (data != null)
+			{
+				Helper.PrintInvoiceHeader(data);
+			}
 		}
 	}
 }

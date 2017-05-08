@@ -19,7 +19,11 @@ namespace COMP2614Assign03
 
 
 		#region Public Methods
-
+		public static IEnumerable<InvoiceHeader> GetInvoices()
+		{
+			var file = GetFile();
+			return GetData(file); ;
+		}
 		public static void PrintInvoiceHeader(IEnumerable<InvoiceHeader> data)
 		{
 			PrintDottedLine();
@@ -80,16 +84,20 @@ namespace COMP2614Assign03
 			WriteLine();
 			WriteLine($"{"",14}{"Discount:"}{GetDiscount(total, header.ParseTerm()[0]),35:N2}");
 		}
+		public static void PrintErrorMessage(string message)
+		{
+			Clear();
+			ForegroundColor = ConsoleColor.Red;
+			PrintDottedLine();
+			WriteLine(message);
+			PrintDottedLine();
+			ForegroundColor = ConsoleColor.Gray;
+		}
 
 		#endregion Public Methods
 
 		#region Private Methods
-		
-		public static IEnumerable<InvoiceHeader> GetInvoices()
-		{
-			var file = GetFile();
-			return GetData(file); ;
-		}
+
 		private static string GetFile()
 		{
 			var fileFolder = ConfigurationManager.AppSettings["filePath"];
@@ -138,8 +146,6 @@ namespace COMP2614Assign03
 		private static IEnumerable<InvoiceHeader> GetData(string sourceFile)
 		{
 			List<InvoiceHeader> iHeaders = new List<InvoiceHeader>();
-
-
 
 			using (StreamReader sr = new StreamReader(sourceFile))
 			{
