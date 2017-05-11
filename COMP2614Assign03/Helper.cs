@@ -52,7 +52,7 @@ namespace COMP2614Assign03
 			PrintDottedLine();
 			foreach (var line in invLines)
 			{
-				WriteLine($"{line.Quantity,3}{" "}{line.SKU,-10}{line.Description,-20}{line.Price,10}{" "}{(line.Taxable ? "T" : "N"),3}{line.Quantity * line.Price,10:N}");
+				WriteLine($"{line.Quantity,3}{" "}{line.SKU,-10}{line.Description,-20}{line.Price,10}{" "}{(line.Taxable ? "Y" : "N"),3}{line.Quantity * line.Price,10:N}");
 			}
 		}
 		public static void PrintCalculations(InvoiceHeader header, List<InvoiceLine> lines)
