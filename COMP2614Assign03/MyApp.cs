@@ -37,6 +37,7 @@ namespace COMP2614Assign03
 			if (data != null)
 			{
 				Helper.PrintInvoiceHeader(data);
+				SetCursorPosition(0,0);
 			}
 		}
 	}
