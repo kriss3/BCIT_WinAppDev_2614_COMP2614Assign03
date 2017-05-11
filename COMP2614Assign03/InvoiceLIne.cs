@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace COMP2614Assign03
 {
+	/// <summary>
+	/// Basic data class for Invoice lines;
+	/// Adding InvoiceId to relate Invoice Header and Invoice Lines
+	/// </summary>
 	class InvoiceLine
 	{
 		public int Quantity { get; set; }

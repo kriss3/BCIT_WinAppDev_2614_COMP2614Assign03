@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace COMP2614Assign03
 {
+	/// <summary>
+	/// Class to handle Invoice Header;
+	/// Adding InvoiceId to create foreign-key relationship with Invoice Line;
+	/// Invoice Header can have multiple Invoice Lines;
+	/// </summary>
 	class InvoiceHeader
 	{
 		public int InvoiceNumber { get; set; }
@@ -14,6 +19,11 @@ namespace COMP2614Assign03
 		public List<InvoiceLine> InvoiceLines { get; set; }
 		public Guid InvoiceId { get; set; }
 
+		/// <summary>
+		/// Method to split integer into Array of two elements: [0] - discount [1] - number of days; 
+		/// Using Lambda expression to get 3 digit integer code into array of int;
+		/// </summary>
+		/// <returns>Array of Integers</returns>
 		public int[] ParseTerm()
 		{
 			var intArray = Term.ToString().Select(c => Convert.ToInt32(c.ToString())).ToArray();
