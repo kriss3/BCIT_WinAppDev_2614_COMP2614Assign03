@@ -26,6 +26,8 @@ namespace COMP2614Assign03
 		}
 		public static void PrintInvoiceHeader(IEnumerable<InvoiceHeader> data)
 		{
+			PrintTitle();
+			WriteLine();
 			PrintDottedLine();
 			WriteLine("Invoice Listing");
 			PrintDottedLine();
@@ -241,7 +243,11 @@ namespace COMP2614Assign03
 			var num = 58;
 			WriteLine(new String('-', num));
 		}
-		
+		private static void PrintTitle()
+		{
+			Title = $"Welcome, {Environment.UserName}. Assignment 3 - Printing Invoices from dedicated source.";
+		}
+
 		#endregion Private Methods
 	}
 }
