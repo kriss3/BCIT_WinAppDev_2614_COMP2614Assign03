@@ -19,10 +19,9 @@ namespace COMP2614Assign03
 
 
 		#region Public Methods
-		public static IEnumerable<InvoiceHeader> GetInvoices()
+		public static IList<InvoiceHeader> GetInvoices(string args)
 		{
-			var file = GetFile();
-			return GetData(file); ;
+			return GetData(args);
 		}
 		public static void PrintInvoiceHeader(IEnumerable<InvoiceHeader> data)
 		{
@@ -57,7 +56,7 @@ namespace COMP2614Assign03
 				WriteLine($"{line.Quantity,3}{" "}{line.SKU,-10}{line.Description,-20}{line.Price,10}{" "}{(line.Taxable ? "Y" : "N"),3}{line.Quantity * line.Price,10:N}");
 			}
 		}
-		public static void PrintCalculations(InvoiceHeader header, List<InvoiceLine> lines)
+		public static void PrintCalculations(InvoiceHeader header, IEnumerable<InvoiceLine> lines)
 		{
 			double subtotal = 0.0;
 			double gst = 0.0;
@@ -100,7 +99,7 @@ namespace COMP2614Assign03
 
 		#region Private Methods
 
-		private static string GetFile()
+		private static string GetFileFromConfig()
 		{
 			var fileFolder = ConfigurationManager.AppSettings["filePath"];
 			string filter = "*.txt";
@@ -126,7 +125,7 @@ namespace COMP2614Assign03
 
 			return iLines;
 		}
-		private static InvoiceHeader GetHeader(string fileHeader, List<InvoiceLine> lines, Guid guid)
+		private static InvoiceHeader GetHeader(string fileHeader, IEnumerable<InvoiceLine> lines, Guid guid)
 		{
 			var header = fileHeader.Split(':');
 			var invHeader = new InvoiceHeader
@@ -134,7 +133,7 @@ namespace COMP2614Assign03
 				InvoiceNumber = int.Parse(header[0]),
 				InvoiceDate = DateTime.Parse(header[1]),
 				Term = int.Parse(header[2]),
-				InvoiceLines = lines,
+				InvoiceLines = (List<InvoiceLine>)lines,
 				InvoiceId = guid,
 			};
 
@@ -145,7 +144,7 @@ namespace COMP2614Assign03
 		/// </summary>
 		/// <param name="value">takes whatever comes in the input file</param>
 		/// <returns>value boolean True or Falses</returns>
-		private static IEnumerable<InvoiceHeader> GetData(string sourceFile)
+		private static IList<InvoiceHeader> GetData(string sourceFile)
 		{
 			List<InvoiceHeader> iHeaders = new List<InvoiceHeader>();
 

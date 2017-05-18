@@ -12,22 +12,26 @@ namespace COMP2614Assign03
 	/// </summary>
 	class MyApp
 	{
+		public static string input { get; private set; }
 		static void Main(string[] args)
 		{
+			if (args.Length <= 0)
+			{
+				Helper.PrintErrorMessage($"Cannot find Invoice file. Please correct command line arguments.");
+				return;
+			}
+
+			input = args[0];
 			Run();
 			ReadLine();
 		}
 
 		public static void Run()
 		{
-			IEnumerable<InvoiceHeader> data = null;
+			IList<InvoiceHeader> data = null;
 			try
 			{
-				data = Helper.GetInvoices();
-			}
-			catch (DirectoryNotFoundException ex)
-			{
-				Helper.PrintErrorMessage($"Cannot find Invoice file. Please check configuration file.\n\n{ex.Message}");
+				data = Helper.GetInvoices(input);
 			}
 			catch (Exception ex)
 			{
