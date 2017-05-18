@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace COMP2614Assign03
 {
@@ -16,7 +12,13 @@ namespace COMP2614Assign03
 		public string SKU { get; set; }
 		public string Description { get; set; }
 		public decimal Price { get; set; }
-		public bool Taxable { get; set; }
-		public Guid InvoiceId { get; set; }
+		public bool IsTaxable { get; set; }
+		public decimal LineTotal
+		{
+			get
+			{
+				return this.Quantity * this.Price;
+			}
+		}
 	}
 }

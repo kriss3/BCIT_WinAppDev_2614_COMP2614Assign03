@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using static System.Console;
 
 namespace COMP2614Assign03
@@ -24,7 +23,7 @@ namespace COMP2614Assign03
 			ReadLine();
 		}
 
-		public static void Run(string args)
+		private static void Run(string args)
 		{
 			IList<InvoiceHeader> data = null;
 			try
@@ -40,6 +39,7 @@ namespace COMP2614Assign03
 			{
 				Helper.PrintInvoiceHeader(data);
 				SetCursorPosition(0,0);
+				CursorVisible = false;
 			}
 		}
 	}

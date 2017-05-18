@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace COMP2614Assign03
 {
@@ -17,7 +15,6 @@ namespace COMP2614Assign03
 		public DateTime InvoiceDate { get; set; }
 		public int Term { get; set; }
 		public List<InvoiceLine> InvoiceLines { get; set; }
-		public Guid InvoiceId { get; set; }
 
 		/// <summary>
 		/// Method to split integer into Array of two elements: [0] - discount [1] - number of days; 
